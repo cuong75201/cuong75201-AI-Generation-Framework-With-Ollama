@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Chivo:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-surface: #0b1326;
+  --color-on-surface: #dae2fd;
+  --color-on-surface-variant: #c7c4d7;
+  --color-surface-container-lowest: #060e20;
+  --color-surface-container-low: #131b2e;
+  --color-surface-container: #171f33;
+  --color-surface-container-high: #222a3d;
+  --color-surface-container-highest: #2d3449;
+  --color-primary: #c0c1ff;
+  --color-primary-container: #8083ff;
+  --color-on-primary: #1000a9;
+  --color-secondary: #7bd0ff;
+  --color-tertiary: #4edea3;
+  --color-tertiary-container: #00885d;
+  --color-outline: #908fa0;
+  --color-outline-variant: #464554;
+  --color-error-container: #93000a;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+  --font-headline: 'Chivo', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --font-label: 'JetBrains Mono', monospace;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  html { color-scheme: dark; background: var(--color-surface); }
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overscroll-behavior: none;
+    background: var(--color-surface);
+    font-family: var(--font-body);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  button, textarea { font: inherit; }
+  button { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
+  ::selection { background: color-mix(in srgb, var(--color-primary) 38%, transparent); color: var(--color-on-surface); }
+  :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 3px; }
+  * { scrollbar-color: var(--color-outline-variant) transparent; scrollbar-width: thin; }
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-thumb { border-radius: 999px; background: var(--color-outline-variant); }
+}
+
+@layer components {
+  .icon-button {
+    display: grid;
+    min-width: 2rem;
+    min-height: 2rem;
+    place-items: center;
+    border-radius: 0.5rem;
+    color: var(--color-on-surface-variant);
+    transition: color 160ms ease, background-color 160ms ease;
+  }
+  .icon-button:hover { background: var(--color-surface-container); color: var(--color-on-surface); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
